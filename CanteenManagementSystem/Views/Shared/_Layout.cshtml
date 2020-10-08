@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Canteen Management</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/template/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    @*<link rel="stylesheet" href="~/template/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/template/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/template/css/flaticon.css" />
+    <link rel="stylesheet" href="~/template/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/template/css/style.css" />
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-warp">
+            <div class="container">
+                <a href="#" class="site-logo">
+                    
+                    <img src="~/template/img/logo.png" alt="">
+                </a>
+                <div class="user-panel">
+                    @*<a href="#">Login</a><span>/</span><a href="">Register</a>*@
+                    @Html.Partial("_LoginPartial")
+                </div>
+                <div class="nav-switch">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <ul class="main-menu">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.Partial("_Admin")
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.Partial("_Manager")
+                    }
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Header section end -->
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Category", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("Inventory", "Index", "Inventories")</li>
+                        <li>@Html.ActionLink("Customer", "Index", "Customers")</li>
+                        <li>@Html.ActionLink("Item", "Index", "Items")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div class="container-fluid body-content" style="margin-top: 150px;">
+        @RenderBody()
+    </div>
+    <!-- Footer section -->
+    <footer class="footer-section spad pb-0">
+        <div class="container">
+            <div class="footer-bottom">
+
+                <div class="social">
+                    <a href=""><i class="fa fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-dribbble"></i></a>
+                    <a href=""><i class="fa fa-behance"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+                <ul class="footer-menu">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.Partial("_Admin")
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.Partial("_Manager")
+                    }
+                </ul>
+                <div class="footer-logo">
+                    <a href="#">
+                        <img src="~/template/img/footer-logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-white  text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </footer>
+    <!-- Footer section end -->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!--====== Javascripts & Jquery ======-->
+    <script src="~/template/js/jquery-3.2.1.min.js"></script>
+    @*<script src="~/template/js/bootstrap.min.js"></script>*@
+    <script src="~/template/js/owl.carousel.min.js"></script>
+    <script src="~/template/js/circle-progress.min.js"></script>
+    <script src="~/template/js/main.js"></script>
+
+</body>
+</html>
